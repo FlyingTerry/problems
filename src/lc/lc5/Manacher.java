@@ -3,7 +3,7 @@ package lc.lc5;
 public class Manacher {
     public static void main(String[] args) {
         Manacher manacher = new Manacher();
-        System.out.println(manacher.longestPalindrome("abbcccbbbcaaccbababcbcabca"));
+        System.out.println(manacher.longestPalindrome("aacabdkacaa"));
     }
 
     public String longestPalindrome(String s) {
@@ -15,7 +15,7 @@ public class Manacher {
         int[] record = new int[input.length()];
 
         //记录某个点处的臂长
-        record[0]=1;
+        record[0]=0;
 
         int recordRight = 0;
         int recordMid = 0;
@@ -26,7 +26,7 @@ public class Manacher {
             int tmp = 0;
             if (recordRight > i) {
                 int point = recordMid * 2 - recordRight;
-                tmp = Math.min(recordRight - i+1, record[point]);
+                tmp = Math.min(recordRight - i, record[point]);
             }
             int len = expand(input, i-tmp, i+tmp );
             record[i]=len/2;
@@ -41,7 +41,7 @@ public class Manacher {
             }
         }
 
-        int start = maxMid-record[maxMid]+1;
+        int start = maxMid-record[maxMid];
         int end = maxMid+record[maxMid];
         StringBuilder builder = new StringBuilder();
         for (int i = start; i <end; i++) {
