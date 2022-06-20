@@ -18,13 +18,13 @@ func longestPalindrome(s string) string {
             len1 := arm[point]
             len2 := armRight-i;
             if len1 > len2{
-                armLen = len1
-            }else{
                 armLen = len2
+            }else{
+                armLen = len1
             }
         }
 
-        len := expand(input,i-armLen,i+armLen)
+        len := expand(input,i-armLen-1,i+armLen+1)
 
         arm = append(arm,len/2)
 

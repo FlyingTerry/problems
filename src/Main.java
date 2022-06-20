@@ -1,10 +1,16 @@
-public class Main extends ClassLoader{
-    public static void main(String[] args) {
-        System.out.println(String.class.getClassLoader());
-    }
+import java.util.Arrays;
 
-    @Override
-    protected Class<?> findClass(String name) throws ClassNotFoundException {
-        return super.findClass(name);
+public class Main  {
+    public static void main(String[] args) {
+        String s = "demo2";
+        switch (s) {
+            case "demo1":
+                System.out.println("demo1");
+            case "demo2":
+                System.out.println("demo2");
+                break;
+            default:
+                System.out.println("demo3");
+        }
     }
 }
